@@ -1,6 +1,5 @@
 package at.favre.app.blurbenchmark.fragments;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import at.favre.app.blurbenchmark.R;
 import at.favre.app.blurbenchmark.SettingsController;

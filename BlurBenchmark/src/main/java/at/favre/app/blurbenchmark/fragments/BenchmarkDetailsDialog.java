@@ -1,6 +1,5 @@
 package at.favre.app.blurbenchmark.fragments;
 
-import android.app.DialogFragment;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -10,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.jjoe64.graphview.CustomLabelFormatter;
 import com.jjoe64.graphview.GraphView;

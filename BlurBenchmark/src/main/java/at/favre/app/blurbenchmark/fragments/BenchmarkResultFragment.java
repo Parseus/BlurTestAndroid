@@ -1,6 +1,5 @@
 package at.favre.app.blurbenchmark.fragments;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
@@ -9,6 +8,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
@@ -81,7 +82,7 @@ public class BenchmarkResultFragment extends Fragment {
 
     private void setUpListView() {
         if (!benchmarkResultList.getBenchmarkWrappers().isEmpty()) {
-            adapter = new BenchmarkResultAdapter(benchmarkResultList.getBenchmarkWrappers(), getActivity().getFragmentManager());
+            adapter = new BenchmarkResultAdapter(benchmarkResultList.getBenchmarkWrappers(), getActivity().getSupportFragmentManager());
             recyclerView.setAdapter(adapter);
         }
     }

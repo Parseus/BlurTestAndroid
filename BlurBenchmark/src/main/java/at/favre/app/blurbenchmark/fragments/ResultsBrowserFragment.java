@@ -1,9 +1,10 @@
 package at.favre.app.blurbenchmark.fragments;
 
-import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;

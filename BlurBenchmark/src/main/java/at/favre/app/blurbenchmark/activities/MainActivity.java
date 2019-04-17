@@ -1,8 +1,6 @@
 package at.favre.app.blurbenchmark.activities;
 
 import android.app.ActivityManager;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -13,6 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.renderscript.RenderScript;
 import android.util.Log;
 import android.view.MenuItem;
@@ -128,10 +128,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Fragment fragment;
-                if ((fragment = getFragmentManager().findFragmentByTag(LiveBlurFragment.class.getSimpleName())) != null) {
+                if ((fragment = getSupportFragmentManager().findFragmentByTag(LiveBlurFragment.class.getSimpleName())) != null) {
                     ((IFragmentWithBlurSettings) fragment).switchShowSettings();
                 }
-                if ((fragment = getFragmentManager().findFragmentByTag(StaticBlurFragment.class.getSimpleName())) != null) {
+                if ((fragment = getSupportFragmentManager().findFragmentByTag(StaticBlurFragment.class.getSimpleName())) != null) {
                     ((IFragmentWithBlurSettings) fragment).switchShowSettings();
                 }
                 return true;
@@ -143,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean selectView(@IdRes int menuId) {
 
         if (currentFragmentTag != null) {
-            Fragment f = getFragmentManager().findFragmentByTag(currentFragmentTag);
-            getFragmentManager().beginTransaction().detach(f).commitAllowingStateLoss();
+            Fragment f = getSupportFragmentManager().findFragmentByTag(currentFragmentTag);
+            getSupportFragmentManager().beginTransaction().detach(f).commitAllowingStateLoss();
             Log.v(TAG, "detach " + currentFragmentTag);
         }
 
@@ -198,15 +198,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFragment(String tag, FragmentFactory factory) {
-        if (getFragmentManager().findFragmentByTag(tag) == null) {
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             Log.v(TAG, "add " + tag);
-            FragmentTransaction t = getFragmentManager().beginTransaction();
+            FragmentTransaction t = getSupportFragmentManager().beginTransaction();
             t.add(R.id.root, factory.create(), tag);
             t.commitAllowingStateLoss();
         } else {
             Log.v(TAG, "attach " + tag);
-            FragmentTransaction t = getFragmentManager().beginTransaction();
-            t.attach(getFragmentManager().findFragmentByTag(tag));
+            FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+            t.attach(getSupportFragmentManager().findFragmentByTag(tag));
             t.commitAllowingStateLoss();
         }
         currentFragmentTag = tag;

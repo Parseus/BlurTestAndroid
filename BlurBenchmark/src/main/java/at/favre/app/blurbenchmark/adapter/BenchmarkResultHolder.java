@@ -3,9 +3,10 @@ package at.favre.app.blurbenchmark.adapter;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
+
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
