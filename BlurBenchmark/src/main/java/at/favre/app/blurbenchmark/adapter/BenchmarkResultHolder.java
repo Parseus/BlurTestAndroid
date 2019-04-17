@@ -6,7 +6,7 @@ import android.animation.AnimatorSet;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -69,8 +69,8 @@ public class BenchmarkResultHolder extends RecyclerView.ViewHolder {
 
             tvAdditionalInfo.setText(BenchmarkUtil.formatNum(wrapper.getStatInfo().getThroughputMPixelsPerSec()) + " MPixS / " + wrapper.getStatInfo().getAlgorithm().toString());
             tvAvg.setText(BenchmarkUtil.formatNum(wrapper.getStatInfo().getAsAvg().getAvg()) + "ms");
-            Picasso.with(ctx).load(wrapper.getBitmapAsFile()).placeholder(R.drawable.placeholder).into(imageView);
-            Picasso.with(ctx).load(wrapper.getFlippedBitmapAsFile()).placeholder(R.drawable.placeholder).into((ImageView) backImageWrapper.findViewById(R.id.thumbnail2));
+            Picasso.get().load(wrapper.getBitmapAsFile()).placeholder(R.drawable.placeholder).into(imageView);
+            Picasso.get().load(wrapper.getFlippedBitmapAsFile()).placeholder(R.drawable.placeholder).into((ImageView) backImageWrapper.findViewById(R.id.thumbnail2));
             tvDeviation.setText("+/-" + BenchmarkUtil.formatNum(wrapper.getStatInfo().getAsAvg().get90PercentConfidenceIntervall().getStdError()) + "ms");
             ((TextView) backImageWrapper.findViewById(R.id.tv_imageInfo2)).setText("bmp loading: " + BenchmarkUtil.formatNum(wrapper.getStatInfo().getLoadBitmap()) + "ms\n" +
                     "blur min/max: " + BenchmarkUtil.formatNum(wrapper.getStatInfo().getAsAvg().getMin()) + "ms/" + BenchmarkUtil.formatNum(wrapper.getStatInfo().getAsAvg().getMax()) + "ms\n" +
@@ -167,7 +167,7 @@ public class BenchmarkResultHolder extends RecyclerView.ViewHolder {
             });
         } else {
             imageView.setImageDrawable(new BitmapDrawable(ctx.getResources()));
-            Picasso.with(ctx).load(R.drawable.placeholder).into(imageView);
+            Picasso.get().load(R.drawable.placeholder).into(imageView);
             tvErrMsg.setVisibility(View.VISIBLE);
             tvErrMsg.setText(wrapper.getStatInfo().getErrorDescription());
 

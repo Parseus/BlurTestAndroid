@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v8.renderscript.RenderScript;
+import androidx.renderscript.RenderScript;
 import android.util.Log;
 
 import java.io.IOException;

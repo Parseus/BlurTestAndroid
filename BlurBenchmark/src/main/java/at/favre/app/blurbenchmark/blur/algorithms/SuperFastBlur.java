@@ -18,17 +18,17 @@ public class SuperFastBlur implements IBlur {
         int hm = h - 1;
         int wh = w * h;
         int div = radius + radius + 1;
-        int r[] = new int[wh];
-        int g[] = new int[wh];
-        int b[] = new int[wh];
+        int[] r = new int[wh];
+        int[] g = new int[wh];
+        int[] b = new int[wh];
         int rsum, gsum, bsum, x, y, i, p, p1, p2, yp, yi, yw;
-        int vmin[] = new int[Math.max(w, h)];
-        int vmax[] = new int[Math.max(w, h)];
+        int[] vmin = new int[Math.max(w, h)];
+        int[] vmax = new int[Math.max(w, h)];
         int[] pix = new int[w * h];
 
         original.getPixels(pix, 0, w, 0, 0, w, h);
 
-        int dv[] = new int[256 * div];
+        int[] dv = new int[256 * div];
         for (i = 0; i < 256 * div; i++) {
             dv[i] = (i / div);
         }

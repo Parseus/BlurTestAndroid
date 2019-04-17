@@ -11,12 +11,12 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v13.app.FragmentCompat;
-import android.support.v4.content.ContextCompat;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -178,7 +178,8 @@ public class BlurBenchmarkFragment extends Fragment {
                 Log.d(TAG, "permission granted");
                 startSelectImage();
             } else {
-                if (FragmentCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                        && shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     Log.d(TAG, "show permission rationale");
                     Snackbar.make(getView(), "You need to allow the app to read your disk if you want to add custom images.", Snackbar.LENGTH_LONG).show();
                 }
@@ -190,7 +191,9 @@ public class BlurBenchmarkFragment extends Fragment {
     private boolean checkHasReadStoragePermission() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             Log.d(TAG, "permission not granted yet, show dialog");
-            FragmentCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION);
+            }
             return false;
         }
         Log.d(TAG, "permission already granted");

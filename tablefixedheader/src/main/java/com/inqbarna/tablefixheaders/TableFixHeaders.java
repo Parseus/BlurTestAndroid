@@ -546,11 +546,11 @@ public class TableFixHeaders extends ViewGroup {
 		setMeasuredDimension(w, h);
 	}
 
-	private int sumArray(int array[]) {
+	private int sumArray(int[] array) {
 		return sumArray(array, 0, array.length);
 	}
 
-	private int sumArray(int array[], int firstIndex, int count) {
+	private int sumArray(int[] array, int firstIndex, int count) {
 		int sum = 0;
 		count += firstIndex;
 		for (int i = firstIndex; i < count; i++) {
@@ -625,7 +625,7 @@ public class TableFixHeaders extends ViewGroup {
 		scrollY = scrollBounds(scrollY, firstRow, heights, height);
 	}
 
-	private int scrollBounds(int desiredScroll, int firstCell, int sizes[], int viewSize) {
+	private int scrollBounds(int desiredScroll, int firstCell, int[] sizes, int viewSize) {
 		if (desiredScroll == 0) {
 			// no op
 		} else if (desiredScroll < 0) {
@@ -637,7 +637,7 @@ public class TableFixHeaders extends ViewGroup {
 	}
 
 	private void adjustFirstCellsAndScroll() {
-		int values[];
+        int[] values;
 
 		values = adjustFirstCellsAndScroll(scrollX, firstColumn, widths);
 		scrollX = values[0];
@@ -648,7 +648,7 @@ public class TableFixHeaders extends ViewGroup {
 		firstRow = values[1];
 	}
 
-	private int[] adjustFirstCellsAndScroll(int scroll, int firstCell, int sizes[]) {
+	private int[] adjustFirstCellsAndScroll(int scroll, int firstCell, int[] sizes) {
 		if (scroll == 0) {
 			// no op
 		} else if (scroll > 0) {

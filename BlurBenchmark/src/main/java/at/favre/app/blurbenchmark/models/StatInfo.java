@@ -192,7 +192,7 @@ public class StatInfo {
 
     @JsonIgnore
     public String getMegaPixels() {
-        return String.valueOf((double) Math.round((double) (bitmapHeight * bitmapWidth) / 1000000d * 100d) / 100d) + "MP";
+        return (double) Math.round((double) (bitmapHeight * bitmapWidth) / 1000000d * 100d) / 100d + "MP";
     }
 
     @JsonIgnore

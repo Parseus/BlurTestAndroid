@@ -23,7 +23,7 @@ public interface TableAdapter {
 	 * 
 	 * @see #getItemViewType(int, int)
 	 */
-	public final static int IGNORE_ITEM_VIEW_TYPE = -1;
+    int IGNORE_ITEM_VIEW_TYPE = -1;
 
 	/**
 	 * Register an observer that is called when changes happen to the data used
@@ -48,14 +48,14 @@ public interface TableAdapter {
 	 * 
 	 * @return count of rows.
 	 */
-	public int getRowCount();
+    int getRowCount();
 
 	/**
 	 * How many columns are in the data table represented by this Adapter.
 	 * 
 	 * @return count of columns.
 	 */
-	public int getColumnCount();
+    int getColumnCount();
 
 	/**
 	 * Get a View that displays the data at the specified row and column in the
@@ -74,7 +74,7 @@ public interface TableAdapter {
 	 *            The parent that this view will eventually be attached to.
 	 * @return A View corresponding to the data at the specified row and column.
 	 */
-	public View getView(int row, int column, View convertView, ViewGroup parent);
+    View getView(int row, int column, View convertView, ViewGroup parent);
 
 	/**
 	 * Return the width of the column.
@@ -83,7 +83,7 @@ public interface TableAdapter {
 	 *            the column. If the column is <code>-1</code> it is the header.
 	 * @return The width of the column, in pixels.
 	 */
-	public int getWidth(int column);
+    int getWidth(int column);
 
 	/**
 	 * Return the height of the row.
@@ -92,7 +92,7 @@ public interface TableAdapter {
 	 *            the row. If the row is <code>-1</code> it is the header.
 	 * @return The height of the row, in pixels.
 	 */
-	public int getHeight(int row);
+    int getHeight(int row);
 
 	/**
 	 * Get the type of View that will be created by
@@ -112,7 +112,7 @@ public interface TableAdapter {
 	 *         be in the range 0 to {@link #getViewTypeCount()} - 1.
 	 *         {@link #IGNORE_ITEM_VIEW_TYPE} can also be returned.
 	 */
-	public int getItemViewType(int row, int column);
+    int getItemViewType(int row, int column);
 
 	/**
 	 * Returns the number of types of Views that will be created by
@@ -126,6 +126,6 @@ public interface TableAdapter {
 	 * 
 	 * @return The number of types of Views that will be created by this adapter
 	 */
-	public int getViewTypeCount();
+    int getViewTypeCount();
 
 }

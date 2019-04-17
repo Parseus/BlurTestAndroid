@@ -9,9 +9,9 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -106,7 +106,7 @@ public class BenchmarkResultFragment extends Fragment {
                     try {
                         Point size = new Point();
                         getActivity().getWindowManager().getDefaultDisplay().getSize(size);
-                        return Picasso.with(getActivity()).load(benchmarkResultList.getBenchmarkWrappers().get(benchmarkResultList.getBenchmarkWrappers().size() - 1).getBitmapAsFile()).noFade().resize(size.x, size.y).centerCrop().get();
+                        return Picasso.get().load(benchmarkResultList.getBenchmarkWrappers().get(benchmarkResultList.getBenchmarkWrappers().size() - 1).getBitmapAsFile()).noFade().resize(size.x, size.y).centerCrop().get();
                     } catch (IOException e) {
                         Log.w(TAG, "Could not set background", e);
                         return null;

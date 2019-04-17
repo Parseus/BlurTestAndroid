@@ -55,7 +55,7 @@ public class BenchmarkDetailsDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dialog_benchmark_details, container, false);
-        Picasso.with(getActivity()).load(wrapper.getBitmapAsFile()).into((android.widget.ImageView) v.findViewById(R.id.image));
+        Picasso.get().load(wrapper.getBitmapAsFile()).into((android.widget.ImageView) v.findViewById(R.id.image));
 
         FrameLayout layout = v.findViewById(R.id.graph);
         layout.addView(createGraph(wrapper));

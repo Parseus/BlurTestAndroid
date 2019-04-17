@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -93,7 +93,7 @@ public class LiveBlurFragment extends Fragment implements IFragmentWithBlurSetti
         tvPerformance = v.findViewById(R.id.tv_performance);
         tvImageSizes = v.findViewById(R.id.tv_imagesizes);
 
-        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 updateBlurView();
@@ -309,7 +309,7 @@ public class LiveBlurFragment extends Fragment implements IFragmentWithBlurSetti
             ImageView imageView = new ImageView(getActivity());
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewPager.LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.MATCH_PARENT));
-            Picasso.with(getActivity()).load(drawableResId).into(imageView);
+            Picasso.get().load(drawableResId).into(imageView);
             return imageView;
         }
 
@@ -322,8 +322,8 @@ public class LiveBlurFragment extends Fragment implements IFragmentWithBlurSetti
                         updateBlurView();
                     }
                 });
-                Picasso.with(getActivity()).load(R.drawable.photo1_med).into((ImageView) scrollViewLayout.findViewById(R.id.photo1));
-                Picasso.with(getActivity()).load(R.drawable.photo2_med).into((ImageView) scrollViewLayout.findViewById(R.id.photo2));
+                Picasso.get().load(R.drawable.photo1_med).into((ImageView) scrollViewLayout.findViewById(R.id.photo1));
+                Picasso.get().load(R.drawable.photo2_med).into((ImageView) scrollViewLayout.findViewById(R.id.photo2));
             }
             return scrollViewLayout;
         }
