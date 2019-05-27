@@ -48,7 +48,7 @@ def getSigningProperties() {
     return props
 }
 
-String getBuildTime() {
+static String getBuildTime() {
     return new Date().toString()
 }
 
