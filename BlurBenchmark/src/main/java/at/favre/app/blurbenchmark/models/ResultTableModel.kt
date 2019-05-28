@@ -19,7 +19,7 @@ class ResultTableModel(db: BenchmarkResultDatabase?) {
 
     enum class RelativeType { BEST, WORST, AVG }
 
-    var tableModel: MutableMap<String, MutableMap<String, BenchmarkResultDatabase.BenchmarkEntry?>> = HashMap()
+    private var tableModel: MutableMap<String, MutableMap<String, BenchmarkResultDatabase.BenchmarkEntry?>> = HashMap()
     val rows = ArrayList<String>()
     val columns = ArrayList<String>()
 

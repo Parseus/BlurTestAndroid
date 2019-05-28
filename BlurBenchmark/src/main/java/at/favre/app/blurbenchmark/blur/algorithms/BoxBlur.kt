@@ -26,8 +26,9 @@ class BoxBlur : IBlur {
 
         boxBlurHorizontal(pixels, w, h, radius / 2)
         boxBlurVertical(pixels, w, h, radius / 2)
+        original.setPixels(pixels, 0, w, 0, 0, w, h)
 
-        c.drawBitmap(pixels, 0, w, 0.0f, 0.0f, w, h, true, null)
+        c.drawBitmap(original, 0f, 0f, null)
 
         return blurred
     }

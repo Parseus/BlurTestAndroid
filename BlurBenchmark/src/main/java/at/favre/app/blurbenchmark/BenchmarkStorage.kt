@@ -1,16 +1,13 @@
 package at.favre.app.blurbenchmark
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.util.Log
-
-import java.io.File
-
 import at.favre.app.blurbenchmark.models.BenchmarkResultDatabase
 import at.favre.app.blurbenchmark.models.BenchmarkWrapper
 import at.favre.app.blurbenchmark.util.BitmapUtil
 import at.favre.app.blurbenchmark.util.JsonUtil
+import java.io.File
 
 /**
  * This is responsible for storeing and retrieving the benchmark data.

@@ -28,7 +28,7 @@ object BlurUtil {
             EBlurAlgorithm.RS_GAUSS_FAST -> RenderScriptGaussianBlur(rs).blur(radius, bitmap)
             EBlurAlgorithm.RS_BOX_5x5 -> RenderScriptBox5x5Blur(rs).blur(radius, bitmap)
             EBlurAlgorithm.RS_GAUSS_5x5 -> RenderScriptGaussian5x5Blur(rs).blur(radius, bitmap)
-            EBlurAlgorithm.RS_STACKBLUR -> RenderScriptStackBlur(rs, ctx).blur(radius, bitmap)
+            EBlurAlgorithm.RS_STACKBLUR -> RenderScriptStackBlur(rs).blur(radius, bitmap)
             EBlurAlgorithm.STACKBLUR -> StackBlur().blur(radius, bitmap)
             EBlurAlgorithm.GAUSS_FAST -> GaussianFastBlur().blur(radius, bitmap)
             EBlurAlgorithm.BOX_BLUR -> BoxBlur().blur(radius, bitmap)

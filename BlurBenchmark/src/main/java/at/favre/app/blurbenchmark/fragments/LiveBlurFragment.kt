@@ -26,6 +26,7 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 
 import com.squareup.picasso.Picasso
 
@@ -150,12 +151,12 @@ class LiveBlurFragment : Fragment(), IFragmentWithBlurSettings {
                 isWorking.compareAndSet(false, true)
                 val start = SystemClock.elapsedRealtime()
                 dest = drawViewToBitmap(dest, view!!.findViewById(R.id.wrapper), settingsController.inSampleSize)
-                topBlurView.setBackgroundDrawable(BitmapDrawable(resources,
+                ViewCompat.setBackground(topBlurView, BitmapDrawable(resources,
                         BlurUtil.blur((requireActivity() as MainActivity).getRs(), requireActivity(),
                                 crop(dest!!.copy(dest!!.config, true), topBlurView,
                                         settingsController.inSampleSize), settingsController.radius,
                                 settingsController.algorithm)))
-                bottomBlurView.setBackgroundDrawable(BitmapDrawable(resources,
+                ViewCompat.setBackground(bottomBlurView, BitmapDrawable(resources,
                         BlurUtil.blur((requireActivity() as MainActivity).getRs(), requireActivity(),
                                 crop(dest!!.copy(dest!!.config, true), bottomBlurView,
                                         settingsController.inSampleSize), settingsController.radius,

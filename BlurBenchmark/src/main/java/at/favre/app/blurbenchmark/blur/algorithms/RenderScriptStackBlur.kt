@@ -1,6 +1,5 @@
 package at.favre.app.blurbenchmark.blur.algorithms
 
-import android.content.Context
 import android.graphics.Bitmap
 import androidx.renderscript.Allocation
 import androidx.renderscript.Element
@@ -13,7 +12,7 @@ import at.favre.app.blurbenchmark.blur.IBlur
  * by kikoso
  * from https://github.com/kikoso/android-stackblur/blob/master/StackBlur/src/blur.rs
  */
-class RenderScriptStackBlur(private val _rs: RenderScript, private val ctx: Context) : IBlur {
+class RenderScriptStackBlur(private val _rs: RenderScript) : IBlur {
 
     override fun blur(radius: Int, original: Bitmap): Bitmap {
         val width = original.width
@@ -27,21 +26,21 @@ class RenderScriptStackBlur(private val _rs: RenderScript, private val ctx: Cont
         blurScript._height = height.toLong()
         blurScript._radius = radius.toLong()
 
-        var row_indices = IntArray(height)
+        var rowIndices = IntArray(height)
         for (i in 0 until height) {
-            row_indices[i] = i
+            rowIndices[i] = i
         }
 
         val rows = Allocation.createSized(_rs, Element.U32(_rs), height, Allocation.USAGE_SCRIPT)
-        rows.copyFrom(row_indices)
+        rows.copyFrom(rowIndices)
 
-        row_indices = IntArray(width)
+        rowIndices = IntArray(width)
         for (i in 0 until width) {
-            row_indices[i] = i
+            rowIndices[i] = i
         }
 
         val columns = Allocation.createSized(_rs, Element.U32(_rs), width, Allocation.USAGE_SCRIPT)
-        columns.copyFrom(row_indices)
+        columns.copyFrom(rowIndices)
 
         blurScript.forEach_blur_h(rows)
         blurScript.forEach_blur_v(columns)

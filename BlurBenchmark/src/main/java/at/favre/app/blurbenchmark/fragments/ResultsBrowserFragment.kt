@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.core.content.ContextCompat
 
 import com.inqbarna.tablefixheaders.TableFixHeaders
 
@@ -72,10 +73,9 @@ class ResultsBrowserFragment : Fragment() {
         (menu!!.findItem(R.id.action_select_datatype).actionView as Spinner).apply {
             val adapter = ArrayAdapter<ResultTableModel.DataType>((requireActivity() as AppCompatActivity).supportActionBar!!.themedContext, R.layout.inc_spinner_light, ResultTableModel.DataType.values())
             this.adapter = adapter
-            if (Build.VERSION.SDK_INT >= 21) {
-                setPopupBackgroundDrawable(resources.getDrawable(R.drawable.spinner_popup_dark, requireActivity().theme))
-            } else if (Build.VERSION.SDK_INT >= 16) {
-                setPopupBackgroundDrawable(resources.getDrawable(R.drawable.spinner_popup_dark))
+
+            if (Build.VERSION.SDK_INT >= 16) {
+                setPopupBackgroundDrawable(ContextCompat.getDrawable(requireActivity(), R.drawable.spinner_popup_dark))
             }
             onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {

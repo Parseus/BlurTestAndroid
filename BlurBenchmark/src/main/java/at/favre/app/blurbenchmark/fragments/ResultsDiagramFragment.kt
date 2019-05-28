@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.FrameLayout
 import android.widget.Spinner
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import at.favre.app.blurbenchmark.BenchmarkStorage
 import at.favre.app.blurbenchmark.R
@@ -135,7 +136,7 @@ class ResultsDiagramFragment : Fragment() {
 
         return LineGraphView(activity, "").apply {
             for (eBlurAlgorithm in dataMap.keys) {
-                val seriesStyle = GraphViewSeries.GraphViewSeriesStyle(res.getColor(eBlurAlgorithm.colorResId), lineThicknessPx)
+                val seriesStyle = GraphViewSeries.GraphViewSeriesStyle(ContextCompat.getColor(requireActivity(), eBlurAlgorithm.colorResId), lineThicknessPx)
                 addSeries(GraphViewSeries(eBlurAlgorithm.toString(), seriesStyle, dataMap[eBlurAlgorithm]!!.toTypedArray()))
             }
 
@@ -153,12 +154,16 @@ class ResultsDiagramFragment : Fragment() {
                 }
             }
             if (dataType.unit.equals("ms", ignoreCase = true) && dataType.minIsBest && imageSizes.isNotEmpty()) {
-                addSeries(GraphUtil.getStraightLine(IBlur.MS_THRESHOLD_FOR_SMOOTH, imageSizes.size - 1, "16ms", GraphViewSeries.GraphViewSeriesStyle(res.getColor(R.color.graphMidnightBlue), lineThicknessPx)))
+                addSeries(GraphUtil.getStraightLine(IBlur.MS_THRESHOLD_FOR_SMOOTH,
+                        imageSizes.size - 1,
+                        "16ms",
+                        GraphViewSeries.GraphViewSeriesStyle(ContextCompat.getColor(requireActivity(),
+                                R.color.graphMidnightBlue), lineThicknessPx)))
             }
             graphViewStyle.run {
-                horizontalLabelsColor = res.getColor(R.color.optionsTextColor)
+                horizontalLabelsColor = ContextCompat.getColor(requireActivity(), R.color.optionsTextColor)
                 numHorizontalLabels = 6
-                verticalLabelsColor = res.getColor(R.color.optionsTextColor)
+                verticalLabelsColor = ContextCompat.getColor(requireActivity(), R.color.optionsTextColor)
                 numVerticalLabels = 6
                 verticalLabelsAlign = Paint.Align.CENTER
                 verticalLabelsWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 54f, res.displayMetrics).toInt()

@@ -21,8 +21,8 @@ class ResultTableAdapter(private val ctx: Context, db: BenchmarkResultDatabase, 
 
     private val model: ResultTableModel = ResultTableModel(db)
 
-    override fun getRowCount() = model.rows.size
-    override fun getColumnCount() = model.columns.size
+    override val rowCount = model.rows.size
+    override val columnCount = model.columns.size
 
     override fun getView(row: Int, column: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
@@ -99,5 +99,5 @@ class ResultTableAdapter(private val ctx: Context, db: BenchmarkResultDatabase, 
         }
     }
 
-    override fun getViewTypeCount() = 3
+    override val viewTypeCount = 3
 }

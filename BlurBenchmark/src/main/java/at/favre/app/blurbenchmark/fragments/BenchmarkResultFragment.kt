@@ -12,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -65,7 +67,7 @@ class BenchmarkResultFragment : Fragment() {
 
     private fun setUpListView() {
         if (benchmarkResultList.benchmarkWrappers.isNotEmpty()) {
-            adapter = BenchmarkResultAdapter(benchmarkResultList.benchmarkWrappers, activity!!.supportFragmentManager)
+            adapter = BenchmarkResultAdapter(benchmarkResultList.benchmarkWrappers, requireActivity().supportFragmentManager)
             recyclerView.adapter = adapter
         }
     }
@@ -97,8 +99,8 @@ class BenchmarkResultFragment : Fragment() {
 
                 override fun onPostExecute(bitmap: Bitmap) {
                     if (view != null) {
-                        val bitmapDrawable = BitmapDrawable(activity!!.resources, bitmap)
-                        view!!.rootView.setBackgroundDrawable(LayerDrawable(arrayOf(bitmapDrawable, ColorDrawable(resources.getColor(R.color.transparent)))))
+                        val bitmapDrawable = BitmapDrawable(requireActivity().resources, bitmap)
+                        ViewCompat.setBackground(view!!.rootView, LayerDrawable(arrayOf(bitmapDrawable, ColorDrawable(ContextCompat.getColor(requireActivity(), R.color.transparent)))))
                     }
                 }
             }.execute()

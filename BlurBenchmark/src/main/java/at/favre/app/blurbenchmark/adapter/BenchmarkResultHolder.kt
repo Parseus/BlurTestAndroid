@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 
 import androidx.fragment.app.FragmentManager
@@ -117,7 +118,7 @@ class BenchmarkResultHolder(private val root: View, private val fragmentManager:
                 dialog.show(fragmentManager, MainActivity.DIALOG_TAG)
             }
         } else {
-            imageView.setImageDrawable(BitmapDrawable(ctx.resources))
+            imageView.setImageDrawable(BitmapDrawable(ctx.resources, Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)))
             Picasso.get().load(R.drawable.placeholder).into(imageView)
             tvErrMsg.visibility = View.VISIBLE
             tvErrMsg.text = wrapper.statInfo.errorDescription
@@ -137,9 +138,9 @@ class BenchmarkResultHolder(private val root: View, private val fragmentManager:
             root.setOnClickListener(null)
         }
 
-        tvBlurRadius.text = wrapper.statInfo.blurRadius.toString() + "px"
+        tvBlurRadius.text = "${wrapper.statInfo.blurRadius}px"
         tvImageInfo.text = wrapper.statInfo.bitmapByteSize
-        tvWidthHeight.text = wrapper.statInfo.bitmapHeight.toString() + " x " + wrapper.statInfo.bitmapWidth + " / " + wrapper.statInfo.megaPixels
+        tvWidthHeight.text = "${wrapper.statInfo.bitmapHeight} x ${wrapper.statInfo.bitmapWidth} / ${wrapper.statInfo.megaPixels}"
 
     }
 }
