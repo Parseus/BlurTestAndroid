@@ -17,7 +17,7 @@
 #define LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 #define LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
-#define CLASS_RU0XDC_NE10_BLUR "ru0xdc/ne10/Blur"
+#define CLASS_RU0XDC_NE10_BLUR "ru0xdc/ne10/NdkNe10BoxBlur"
 
 extern void ne10_img_boxfilter_rgba8888_c (const ne10_uint8_t *src,
         ne10_uint8_t *dst,
@@ -144,7 +144,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)
     if (!register_natives(env))
         goto bail;
 
-    if (!ne10_init(env))
+    if (!ne10_init())
         goto bail;
 
     /* success -- return valid version number */

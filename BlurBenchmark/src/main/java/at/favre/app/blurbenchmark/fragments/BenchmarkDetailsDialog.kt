@@ -63,7 +63,7 @@ class BenchmarkDetailsDialog: DialogFragment() {
                 addSeries(GraphUtil.getStraightLine(IBlur.MS_THRESHOLD_FOR_SMOOTH, wrapper.statInfo.benchmarkData.size - 1, "16ms", GraphViewSeries.GraphViewSeriesStyle(ContextCompat.getColor(requireContext(), R.color.graphBgRed), lineThicknessPx)))
             }
             addSeries(GraphUtil.getStraightLine(wrapper.statInfo.asAvg.avg!!.toInt(), wrapper.statInfo.benchmarkData.size - 1, "Avg", GraphViewSeries.GraphViewSeriesStyle(ContextCompat.getColor(requireContext(), R.color.graphBlue), lineThicknessPx)))
-            addSeries(GraphViewSeries("Blur", seriesStyle, data))
+            addSeries(GraphViewSeries("NdkNe10BoxBlur", seriesStyle, data))
             isScrollable = true
             setScalable(true)
             setManualYAxis(true)

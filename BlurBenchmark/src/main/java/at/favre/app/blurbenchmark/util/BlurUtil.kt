@@ -1,6 +1,5 @@
 package at.favre.app.blurbenchmark.util
 
-import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
 import androidx.renderscript.Allocation
@@ -23,7 +22,7 @@ import at.favre.app.blurbenchmark.blur.algorithms.SuperFastBlur
  */
 object BlurUtil {
 
-    fun blur(rs: RenderScript, ctx: Context, bitmap: Bitmap, radius: Int, algorithm: EBlurAlgorithm): Bitmap? {
+    fun blur(rs: RenderScript, bitmap: Bitmap, radius: Int, algorithm: EBlurAlgorithm): Bitmap? {
         return when (algorithm) {
             EBlurAlgorithm.RS_GAUSS_FAST -> RenderScriptGaussianBlur(rs).blur(radius, bitmap)
             EBlurAlgorithm.RS_BOX_5x5 -> RenderScriptBox5x5Blur(rs).blur(radius, bitmap)
@@ -32,10 +31,8 @@ object BlurUtil {
             EBlurAlgorithm.STACKBLUR -> StackBlur().blur(radius, bitmap)
             EBlurAlgorithm.GAUSS_FAST -> GaussianFastBlur().blur(radius, bitmap)
             EBlurAlgorithm.BOX_BLUR -> BoxBlur().blur(radius, bitmap)
-            //            case NDK_STACKBLUR:
-            //                return NdkStackBlur.create().blur(radius, bitmap);
-            //            case NDK_NE10_BOX_BLUR:
-            //                return new Blur().blur(radius, bitmap);
+//            EBlurAlgorithm.NDK_STACKBLUR -> NdkStackBlur.create().blur(radius, bitmap)
+            EBlurAlgorithm.NDK_NE10_BOX_BLUR -> ru0xdc.ne10.NdkNe10BoxBlur().blur(radius, bitmap)
             EBlurAlgorithm.SUPER_FAST_BLUR -> SuperFastBlur().blur(radius, bitmap)
             else -> bitmap
         }

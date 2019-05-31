@@ -1,42 +1,28 @@
-//import org.apache.tools.ant.taskdefs.condition.Os
-//apply plugin: 'android-library'
-//
-//android {
-//    compileSdkVersion rootProject.ext.compileSdkVersion
-//    buildToolsVersion rootProject.ext.buildToolsVersion
-//
-//    defaultConfig {
-//        minSdkVersion 8
-//        targetSdkVersion rootProject.ext.targetSdkVersion
-//        versionCode 1
-//        versionName "1.0.1"
-//    }
-//
-//    sourceSets.main {
-//        jniLibs.srcDir 'src/main/libs'
-//        jni.srcDirs = [] //disable automatic ndk-build call
-//    }
-//}
-//
-//// call regular ndk-build(.cmd) script from app directory
-//task ndkBuild(type: Exec) {
-//    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-//        commandLine 'ndk-build.cmd', '-C', file('src/main').absolutePath
-//    } else {
-//        commandLine '/bin/bash', '-l', '-c', "ndk-build -C ${file('src/main').absolutePath}"
-//    }
-//}
-//
-//task ndkClean(type: Exec) {
-//    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-//        commandLine 'ndk-build.cmd', '-C', file('src/main').absolutePath, "clean"
-//    } else {
-//        commandLine '/bin/bash', '-l', '-c', "ndk-build -C ${file('src/main').absolutePath} clean"
-//    }
-//}
-//
-//tasks.withType(JavaCompile) {
-//    compileTask -> compileTask.dependsOn ndkBuild
-//}
-//
-//clean.dependsOn ndkClean
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.1"
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+repositories {
+    mavenCentral()
+}

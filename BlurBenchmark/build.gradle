@@ -87,7 +87,7 @@ dependencies {
 
     implementation project(':tablefixedheader')
 //    compile project(':paralloid')
-//    compile project(':ne10blur')
+    implementation project(':ne10blur')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

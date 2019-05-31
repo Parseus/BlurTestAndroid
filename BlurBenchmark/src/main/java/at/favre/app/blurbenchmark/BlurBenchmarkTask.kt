@@ -90,7 +90,7 @@ open class BlurBenchmarkTask(image: BenchmarkImage,
 
                     BenchmarkUtil.elapsedRealTimeNanos()
                     blurredBitmap = master!!.copy(master!!.config, true)
-                    blurredBitmap = BlurUtil.blur(rs, ctx, blurredBitmap!!, radius, algorithm)
+                    blurredBitmap = BlurUtil.blur(rs, blurredBitmap!!, radius, algorithm)
                 }
             } else {
                 Log.d(TAG, "Skip warmup")
@@ -104,7 +104,7 @@ open class BlurBenchmarkTask(image: BenchmarkImage,
 
                 val startBlur = BenchmarkUtil.elapsedRealTimeNanos()
                 blurredBitmap = master!!.copy(master!!.config, true)
-                blurredBitmap = BlurUtil.blur(rs, ctx, blurredBitmap!!, radius, algorithm)
+                blurredBitmap = BlurUtil.blur(rs, blurredBitmap!!, radius, algorithm)
                 statInfo.benchmarkData.add((BenchmarkUtil.elapsedRealTimeNanos() - startBlur) / 1000000.0)
             }
 

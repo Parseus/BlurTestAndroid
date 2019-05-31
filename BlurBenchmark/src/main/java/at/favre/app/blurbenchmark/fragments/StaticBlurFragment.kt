@@ -130,7 +130,7 @@ class StaticBlurFragment : Fragment(), IFragmentWithBlurSettings {
             var blurredBitmap: Bitmap? = null
 
             try {
-                blurredBitmap = BlurUtil.blur((requireActivity() as MainActivity).getRs(), requireContext(), blurTemplate!!.copy(blurTemplate!!.config, true), settingsController.radius, settingsController.algorithm)
+                blurredBitmap = BlurUtil.blur((requireActivity() as MainActivity).getRs(), blurTemplate!!.copy(blurTemplate!!.config, true), settingsController.radius, settingsController.algorithm)
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), e.localizedMessage, Toast.LENGTH_LONG).show()
             }

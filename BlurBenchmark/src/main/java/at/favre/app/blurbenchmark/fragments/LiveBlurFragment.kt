@@ -152,15 +152,13 @@ class LiveBlurFragment : Fragment(), IFragmentWithBlurSettings {
                 val start = SystemClock.elapsedRealtime()
                 dest = drawViewToBitmap(dest, view!!.findViewById(R.id.wrapper), settingsController.inSampleSize)
                 ViewCompat.setBackground(topBlurView, BitmapDrawable(resources,
-                        BlurUtil.blur((requireActivity() as MainActivity).getRs(), requireActivity(),
-                                crop(dest!!.copy(dest!!.config, true), topBlurView,
-                                        settingsController.inSampleSize), settingsController.radius,
-                                settingsController.algorithm)))
+                        BlurUtil.blur((requireActivity() as MainActivity).getRs(), crop(dest!!.copy(dest!!.config, true), topBlurView,
+                                settingsController.inSampleSize),
+                                settingsController.radius, settingsController.algorithm)))
                 ViewCompat.setBackground(bottomBlurView, BitmapDrawable(resources,
-                        BlurUtil.blur((requireActivity() as MainActivity).getRs(), requireActivity(),
-                                crop(dest!!.copy(dest!!.config, true), bottomBlurView,
-                                        settingsController.inSampleSize), settingsController.radius,
-                                settingsController.algorithm)))
+                        BlurUtil.blur((requireActivity() as MainActivity).getRs(), crop(dest!!.copy(dest!!.config, true), bottomBlurView,
+                                settingsController.inSampleSize),
+                                settingsController.radius, settingsController.algorithm)))
                 checkAndSetPerformanceTextView(SystemClock.elapsedRealtime() - start)
                 tvImageSizes.text = "${(topBlurView.background as BitmapDrawable).bitmap.width}x${(topBlurView.background as BitmapDrawable).bitmap.height} / ${(bottomBlurView.background as BitmapDrawable).bitmap.width}x${(bottomBlurView.background as BitmapDrawable).bitmap.height}"
                 isWorking.compareAndSet(true, false)

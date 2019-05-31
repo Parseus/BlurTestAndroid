@@ -7,7 +7,8 @@ import at.favre.app.blurbenchmark.blur.IBlur
 /**
  * Super Fast Blur by Mario Klingemann<br></br>
  * Resource: http://incubator.quasimondo.com/processing/superfast_blur.php<br></br>
- * StackOverflow - Understanding super fast blur algorithm: http://stackoverflow.com/questions/21418892/understanding-super-fast-blur-algorithm<br></br>
+ * StackOverflow - Understanding super fast blur algorithm:
+ * http://stackoverflow.com/questions/21418892/understanding-super-fast-blur-algorithm<br></br>
  */
 class SuperFastBlur : IBlur {
     override fun blur(radius: Int, original: Bitmap): Bitmap? {
